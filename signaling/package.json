@@ -1,0 +1,16 @@
+{
+  "name": "@remoto/signaling",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "node build.mjs",
+    "start": "node dist/main.js",
+    "test": "node --import tsx --test test/server.test.ts test/units.test.ts"
+  },
+  "dependencies": {
+    "@remoto/protocol": "*",
+    "ws": "^8.18.0"
+  }
+}

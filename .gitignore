@@ -1,0 +1,9 @@
+node_modules/
+dist/
+target/
+agent/bin/
+*.log
+.env
+instalador/remoto-agent.exe
+instalador/teste-maquina-limpa.wsb
+scripts/cloudflared.exe

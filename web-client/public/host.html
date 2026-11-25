@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Remoto · Host</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="config.js"></script>
+    <script type="module" src="host.js"></script>
+  </head>
+  <body>
+    <div id="session-banner" class="session-banner" role="alert" hidden>
+      <span><span class="dot" aria-hidden="true">●</span> Sessão ativa: sua tela está sendo transmitida</span>
+      <button id="end-session" class="danger" type="button">Encerrar sessão</button>
+    </div>
+
+    <header class="topbar">
+      <strong class="brand">Remoto · Host <small>(protótipo)</small></strong>
+      <span id="status" class="status">Inativo</span>
+    </header>
+
+    <main class="host-main">
+      <section class="panel">
+        <h1>Disponibilizar este computador</h1>
+        <p class="hint">
+          Protótipo da Etapa 1: a tela é compartilhada pelo Chrome. Na Etapa 2, o agente nativo do Windows substitui esta página.
+        </p>
+        <div class="id-card">
+          <span class="label">Seu ID</span>
+          <span id="host-id" class="host-id">— — —</span>
+        </div>
+        <div class="row">
+          <button id="start" type="button">Compartilhar tela e ficar disponível</button>
+          <button id="stop" class="secondary" type="button" hidden>Parar</button>
+        </div>
+        <p id="message" class="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="request" class="panel request" role="alertdialog" aria-labelledby="request-title" hidden>
+        <h2 id="request-title">Pedido de conexão</h2>
+        <p>Alguém quer ver a sua tela. Recusa automática em 60 segundos.</p>
+        <div class="row">
+          <button id="accept" type="button">Aceitar</button>
+          <button id="refuse" class="secondary" type="button">Recusar</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Pré-visualização</h2>
+        <video id="preview" class="preview" autoplay playsinline muted></video>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Remoto · Conectar</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="config.js"></script>
+    <script type="module" src="viewer.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <strong class="brand">Remoto</strong>
+      <span id="status" class="status">Desconectado</span>
+      <span class="spacer"></span>
+      <select id="monitor" class="monitor" aria-label="Monitor remoto" hidden></select>
+      <button id="side-toggle" class="secondary" type="button" aria-expanded="false" aria-controls="side" hidden>Chat e arquivos</button>
+      <button id="control-toggle" class="secondary" type="button" aria-pressed="true" hidden>Controle: ligado</button>
+      <button id="cad" class="secondary" type="button" title="Envia Ctrl+Alt+Del ao computador remoto (precisa do Remoto instalado com administrador)" hidden>Ctrl+Alt+Del</button>
+      <button id="pointer-lock" class="secondary" type="button" aria-pressed="false" title="Prende o mouse dentro da tela remota. Esc solta." hidden>Travar mouse</button>
+      <button id="fullscreen" class="secondary" type="button" hidden>Tela cheia</button>
+      <button id="disconnect" class="danger" type="button" hidden>Desconectar</button>
+    </header>
+
+    <main>
+      <section id="connect-panel" class="panel narrow">
+        <h1>Acessar outro computador</h1>
+        <form id="connect-form" class="connect-form">
+          <label for="host-id">ID do computador remoto</label>
+          <input id="host-id" class="wide" inputmode="numeric" autocomplete="off" placeholder="123 456 789" maxlength="15" required />
+          <label for="password">Senha (a temporária da janela do Remoto ou a sua senha pessoal)</label>
+          <div class="row">
+            <input id="password" type="password" autocomplete="off" placeholder="senha" maxlength="128" required />
+            <button id="connect" type="submit">Conectar</button>
+          </div>
+        </form>
+        <p id="message" class="message" role="status" aria-live="polite"></p>
+        <p id="download" class="message" hidden>
+          <a href="/baixar" download="remoto-agent.exe">Baixar o Remoto</a> para instalar no computador que vai ser acessado.
+        </p>
+      </section>
+
+      <section id="remote" class="remote" hidden>
+        <video id="screen" autoplay playsinline muted disablepictureinpicture></video>
+        <img id="remote-cursor" class="remote-cursor" alt="" hidden />
+        <div id="stats" class="stats" aria-live="off"></div>
+      </section>
+      <aside id="side" class="side" data-no-remote-keys hidden>
+        <section class="side-section chat">
+          <h2>Chat</h2>
+          <ol id="chat-log" class="chat-log" aria-live="polite"></ol>
+          <form id="chat-form" class="row">
+            <input id="chat-input" class="chat-input" maxlength="4000" placeholder="Mensagem" autocomplete="off" aria-label="Mensagem" />
+            <button type="submit">Enviar</button>
+          </form>
+        </section>
+        <section class="side-section">
+          <h2>Arquivos</h2>
+          <p class="hint">Arraste arquivos para a tela remota ou</p>
+          <label class="button secondary">Escolher arquivos<input id="file-input" type="file" multiple hidden /></label>
+          <ul id="transfers" class="transfers"></ul>
+        </section>
+      </aside>
+      <canvas id="clock" class="clock" aria-hidden="true"></canvas>
+      <p id="measure-result" class="measure-result" role="status"></p>
+    </main>
+  </body>
+</html>

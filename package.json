@@ -1,0 +1,29 @@
+{
+  "name": "remoto",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Acesso remoto próprio: agente Windows + sinalização WebRTC + cliente web",
+  "type": "module",
+  "workspaces": [
+    "protocol",
+    "signaling",
+    "web-client"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "npm run build -w web-client && npm run build -w signaling",
+    "start": "npm run build && npm run start -w signaling",
+    "dev": "npm run build -w web-client && npm run dev -w signaling",
+    "test": "npm test -w protocol && npm test -w signaling && npm test -w web-client",
+    "typecheck": "tsc -p protocol && tsc -p signaling && tsc -p web-client"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/ws": "^8.5.13",
+    "esbuild": "^0.24.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

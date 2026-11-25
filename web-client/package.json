@@ -1,0 +1,14 @@
+{
+  "name": "@remoto/web-client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch",
+    "test": "node --import tsx --test test/input-map.test.ts test/file-transfer.test.ts"
+  },
+  "dependencies": {
+    "@remoto/protocol": "*"
+  }
+}

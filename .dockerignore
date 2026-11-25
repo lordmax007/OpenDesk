@@ -1,0 +1,10 @@
+**/node_modules
+**/dist
+agent
+docs
+instalador
+scripts
+.claude
+.git
+*.log
+*.md
